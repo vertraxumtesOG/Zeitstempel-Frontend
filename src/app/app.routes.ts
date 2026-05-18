@@ -6,7 +6,11 @@ import { authGuard } from './services/auth.guard';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [authGuard],
+  },
   { path: 'time-log', component: TimeLogComponent, canActivate: [authGuard] },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
 ];

@@ -1,4 +1,12 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, computed, signal } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+  computed,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { getLogins } from '../../../../lib/demo-data';
@@ -35,10 +43,16 @@ export class TimeLogModalComponent {
     }
 
     if (month === 'last') {
-      const lastMonthStart = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+      const lastMonthStart = new Date(
+        today.getFullYear(),
+        today.getMonth() - 1,
+        1,
+      );
       const lastMonthEnd = new Date(today.getFullYear(), today.getMonth(), 0);
       lastMonthEnd.setHours(23, 59, 59, 999);
-      return logins.filter((l) => l.time >= lastMonthStart && l.time <= lastMonthEnd);
+      return logins.filter(
+        (l) => l.time >= lastMonthStart && l.time <= lastMonthEnd,
+      );
     }
 
     if (month === 'week') {
@@ -60,9 +74,12 @@ export class TimeLogModalComponent {
 
     for (let i = index + 1; i < logins.length; i++) {
       if (logins[i].loggedIn) {
-        const durationMs = currentLogin.time.getTime() - logins[i].time.getTime();
+        const durationMs =
+          currentLogin.time.getTime() - logins[i].time.getTime();
         const hours = Math.floor(durationMs / (1000 * 60 * 60));
-        const minutes = Math.floor((durationMs % (1000 * 60 * 60)) / (1000 * 60));
+        const minutes = Math.floor(
+          (durationMs % (1000 * 60 * 60)) / (1000 * 60),
+        );
         return `${hours}h ${minutes}m`;
       }
     }

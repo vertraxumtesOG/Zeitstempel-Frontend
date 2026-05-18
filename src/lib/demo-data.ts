@@ -58,7 +58,9 @@ export function getMitarbeiterByUid(uid: number): Mitarbeiter | undefined {
 }
 
 export function getLogins(userId: number): Login[] {
-  return demoLogins.filter((l) => l.userId === userId).sort((a, b) => b.time.getTime() - a.time.getTime());
+  return demoLogins
+    .filter((l) => l.userId === userId)
+    .sort((a, b) => b.time.getTime() - a.time.getTime());
 }
 
 export function getStatistics(userId: number) {
@@ -75,7 +77,9 @@ export function getStatistics(userId: number) {
     let totalMinutes = 0;
     let inTime: Date | null = null;
 
-    const filteredLogins = logins.filter((l) => l.time >= startDate && l.time <= endDate);
+    const filteredLogins = logins.filter(
+      (l) => l.time >= startDate && l.time <= endDate,
+    );
 
     for (const login of filteredLogins) {
       if (login.loggedIn) {
@@ -96,7 +100,11 @@ export function getStatistics(userId: number) {
   endOfWeek.setDate(thisWeekStart.getDate() + 6);
   endOfWeek.setHours(23, 59, 59, 999);
 
-  const endOfMonth = new Date(thisMonthStart.getFullYear(), thisMonthStart.getMonth() + 1, 0);
+  const endOfMonth = new Date(
+    thisMonthStart.getFullYear(),
+    thisMonthStart.getMonth() + 1,
+    0,
+  );
   endOfMonth.setHours(23, 59, 59, 999);
 
   return {

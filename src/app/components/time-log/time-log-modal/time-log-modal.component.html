@@ -3,19 +3,25 @@
   <div class="modal-dialog">
     <div class="modal-header">
       <h2><i class="pi pi-list"></i> Alle Stempelzeiten</h2>
-      <button class="modal-close" (click)="onClose()" aria-label="Modal schließen">
+      <button
+        class="modal-close"
+        (click)="onClose()"
+        aria-label="Modal schließen"
+      >
         <i class="pi pi-times"></i>
       </button>
     </div>
 
     <div class="modal-filter">
-      <label for="modal-month-filter"><i class="pi pi-filter"></i> Zeitraum:</label>
+      <label for="modal-month-filter"
+        ><i class="pi pi-filter"></i> Zeitraum:</label
+      >
       <select
         id="modal-month-filter"
         [ngModel]="selectedMonth()"
         (ngModelChange)="selectedMonth.set($event)"
         class="month-select"
-        >
+      >
         <option value="all">Alle</option>
         <option value="current">Dieser Monat</option>
         <option value="last">Letzter Monat</option>
@@ -37,8 +43,8 @@
           <tbody>
             @for (login of filteredLogins(); track login.id; let i = $index) {
               <tr [class.highlighted]="login.loggedIn">
-                <td>{{ login.time | date : 'dd.MM.yyyy' }}</td>
-                <td>{{ login.time | date : 'HH:mm' }}</td>
+                <td>{{ login.time | date: 'dd.MM.yyyy' }}</td>
+                <td>{{ login.time | date: 'HH:mm' }}</td>
                 <td>
                   @if (login.loggedIn) {
                     <span class="badge badge-in">Eintritt</span>

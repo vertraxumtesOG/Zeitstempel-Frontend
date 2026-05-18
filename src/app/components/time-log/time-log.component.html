@@ -19,7 +19,7 @@
           [(ngModel)]="selectedMonth"
           class="month-select"
           aria-label="Nach Monat filtern"
-          >
+        >
           <option value="all">Alle Einträge</option>
           <option value="current">Dieser Monat</option>
           <option value="last">Letzter Monat</option>
@@ -43,8 +43,8 @@
             <tbody>
               @for (login of filteredLogins(); track login.id; let i = $index) {
                 <tr [class.highlighted]="login.loggedIn">
-                  <td>{{ login.time | date : 'dd.MM.yyyy' }}</td>
-                  <td>{{ login.time | date : 'HH:mm' }}</td>
+                  <td>{{ login.time | date: 'dd.MM.yyyy' }}</td>
+                  <td>{{ login.time | date: 'HH:mm' }}</td>
                   <td>
                     @if (login.loggedIn) {
                       <span class="badge badge-in">Eintritt</span>
@@ -71,15 +71,21 @@
       <h3><i class="pi pi-table"></i> Zusammenfassung</h3>
       <div class="summary-grid">
         <div class="summary-card">
-          <div class="summary-label"><i class="pi pi-hourglass"></i> Gesamt Arbeitszeit</div>
+          <div class="summary-label">
+            <i class="pi pi-hourglass"></i> Gesamt Arbeitszeit
+          </div>
           <div class="summary-value">{{ totalHours() }}h</div>
         </div>
         <div class="summary-card">
-          <div class="summary-label"><i class="pi pi-arrow-right-to-line"></i> Eintritts-Einträge</div>
+          <div class="summary-label">
+            <i class="pi pi-arrow-right-to-line"></i> Eintritts-Einträge
+          </div>
           <div class="summary-value">{{ entryCount() }}</div>
         </div>
         <div class="summary-card">
-          <div class="summary-label"><i class="pi pi-arrow-left-to-line"></i> Austritts-Einträge</div>
+          <div class="summary-label">
+            <i class="pi pi-arrow-left-to-line"></i> Austritts-Einträge
+          </div>
           <div class="summary-value">{{ exitCount() }}</div>
         </div>
       </div>

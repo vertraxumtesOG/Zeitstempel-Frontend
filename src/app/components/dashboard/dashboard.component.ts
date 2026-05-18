@@ -1,4 +1,10 @@
-import { Component, ChangeDetectionStrategy, computed, inject, signal } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { getStatistics, getLogins } from '../../../lib/demo-data';
@@ -22,7 +28,9 @@ export class DashboardComponent {
     if (!userId) return null;
 
     const logins = getLogins(userId);
-    return logins.length > 0 ? { loggedIn: logins[0].loggedIn, time: logins[0].time } : null;
+    return logins.length > 0
+      ? { loggedIn: logins[0].loggedIn, time: logins[0].time }
+      : null;
   });
 
   statistics = computed(() => {

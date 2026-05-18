@@ -15,17 +15,23 @@
 
     <section class="status-section">
       <div class="status-card">
-        <div class="status-label"><i class="pi pi-clock"></i> Aktueller Status</div>
+        <div class="status-label">
+          <i class="pi pi-clock"></i> Aktueller Status
+        </div>
         <div class="status-value">
           @if (currentStatus()?.loggedIn) {
-            <span class="status-in"><i class="pi pi-check-circle"></i> Eingestempelt</span>
+            <span class="status-in"
+              ><i class="pi pi-check-circle"></i> Eingestempelt</span
+            >
           } @else {
-            <span class="status-out"><i class="pi pi-times-circle"></i> Ausgestempelt</span>
+            <span class="status-out"
+              ><i class="pi pi-times-circle"></i> Ausgestempelt</span
+            >
           }
         </div>
         @if (currentStatus()) {
           <div class="status-time">
-            {{ currentStatus()!.time | date : 'HH:mm' }}
+            {{ currentStatus()!.time | date: 'HH:mm' }}
           </div>
         }
       </div>
@@ -35,15 +41,21 @@
       <h3><i class="pi pi-chart-bar"></i> Arbeitszeiten</h3>
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-label"><i class="pi pi-calendar-times"></i> Heute</div>
+          <div class="stat-label">
+            <i class="pi pi-calendar-times"></i> Heute
+          </div>
           <div class="stat-value">{{ statistics()?.hoursToday || 0 }}h</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label"><i class="pi pi-calendar"></i> Diese Woche</div>
+          <div class="stat-label">
+            <i class="pi pi-calendar"></i> Diese Woche
+          </div>
           <div class="stat-value">{{ statistics()?.hoursThisWeek || 0 }}h</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label"><i class="pi pi-calendar-minus"></i> Dieser Monat</div>
+          <div class="stat-label">
+            <i class="pi pi-calendar-minus"></i> Dieser Monat
+          </div>
           <div class="stat-value">{{ statistics()?.hoursThisMonth || 0 }}h</div>
         </div>
       </div>
@@ -65,8 +77,8 @@
             <tbody>
               @for (login of recentLogins(); track login.id) {
                 <tr>
-                  <td>{{ login.time | date : 'dd.MM.yyyy' }}</td>
-                  <td>{{ login.time | date : 'HH:mm' }}</td>
+                  <td>{{ login.time | date: 'dd.MM.yyyy' }}</td>
+                  <td>{{ login.time | date: 'HH:mm' }}</td>
                   <td>
                     @if (login.loggedIn) {
                       <span class="badge badge-in">Eintritt</span>
@@ -93,6 +105,6 @@
     [isOpen]="showLogModal()"
     [userId]="userId()"
     (close)="closeLogModal()"
-    >
+  >
   </app-time-log-modal>
 </div>
