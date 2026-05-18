@@ -19,13 +19,15 @@
         aria-label="Chip‑UID eingeben"
       />
 
-      <button 
-        type="submit" 
-        class="btn btn-wide" 
+      <sh-button
+        type="submit"
+        variant="primary"
+        size="lg"
+        [fullWidth]="true"
         [disabled]="!uid()"
-        >
+      >
         Continue
-      </button>
+      </sh-button>
     </form>
 
     @if (error()) {

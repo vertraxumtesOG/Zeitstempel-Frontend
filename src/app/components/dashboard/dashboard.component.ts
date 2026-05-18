@@ -6,6 +6,7 @@ import {
   signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ShButtonComponent } from '../shared/sh-button/sh-button.component';
 import { AuthService } from '../../services/auth.service';
 import { getStatistics, getLogins } from '../../../lib/demo-data';
 import { TimeLogModalComponent } from '../time-log/time-log-modal/time-log-modal.component';
@@ -13,7 +14,7 @@ import { TimeLogModalComponent } from '../time-log/time-log-modal/time-log-modal
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, TimeLogModalComponent],
+  imports: [CommonModule, TimeLogModalComponent, ShButtonComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
