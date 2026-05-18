@@ -13,21 +13,59 @@
   color: inherit;
 }
 
-.sh-btn.sm { padding: 6px 10px; font-size: 13px; border-radius: 6px }
-.sh-btn.lg { padding: 14px 18px; font-size: 16px; border-radius: 10px }
+.sh-btn.sm {
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+.sh-btn.lg {
+  padding: 14px 18px;
+  font-size: 16px;
+  border-radius: 10px;
+}
 
-.sh-btn.full { width: 100%; display: flex }
+.sh-btn.full {
+  width: 100%;
+  display: flex;
+}
 
-.sh-btn.primary { background: #000; color: #fff; border-color: transparent }
-.sh-btn.primary:hover { filter: brightness(0.95) }
+.sh-btn.primary {
+  background: #000;
+  color: #fff;
+  border-color: transparent;
+}
+.sh-btn.primary:hover {
+  filter: brightness(0.95);
+}
 
-.sh-btn.outline { background: transparent; color: #000; border-color: #e6e6e6 }
-.sh-btn.outline:hover { background: rgba(0,0,0,0.04) }
+.sh-btn.outline {
+  background: transparent;
+  color: #000;
+  border-color: #e6e6e6;
+}
+.sh-btn.outline:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
 
-.sh-btn.ghost { background: transparent; color: #000; border-color: transparent }
-.sh-btn.ghost:hover { background: rgba(0,0,0,0.02) }
+.sh-btn.ghost {
+  background: transparent;
+  color: #000;
+  border-color: transparent;
+}
+.sh-btn.ghost:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
 
-.sh-btn.danger { background: #ff3b30; color: #fff; border-color: transparent }
-.sh-btn.danger:hover { filter: brightness(0.95) }
+.sh-btn.danger {
+  background: #ff3b30;
+  color: #fff;
+  border-color: transparent;
+}
+.sh-btn.danger:hover {
+  filter: brightness(0.95);
+}
 
-.sh-btn:disabled { opacity: 0.5; cursor: not-allowed }
+.sh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

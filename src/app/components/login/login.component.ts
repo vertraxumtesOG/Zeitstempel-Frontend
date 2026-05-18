@@ -24,7 +24,6 @@ export class LoginComponent {
 
   private authService = inject(AuthService);
 
-
   handleLogin(): void {
     if (!this.uid()) return;
 

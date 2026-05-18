@@ -12,7 +12,8 @@
   width: 100%;
   max-width: 520px;
   padding: 36px 36px;
-  background-image: linear-gradient(#fff, #fff), linear-gradient(135deg, #000, #333);
+  background-image:
+    linear-gradient(#fff, #fff), linear-gradient(135deg, #000, #333);
   background-origin: padding-box, border-box;
   background-clip: padding-box, border-box;
   border: 2px solid transparent;
@@ -105,4 +106,6 @@
   margin-bottom: 6px;
 }
 
-.btn-wide { width: 100%; }
+.btn-wide {
+  width: 100%;
+}
