@@ -1,6 +1,6 @@
-@if (isOpen) {
-  <div class="modal-overlay" (click)="onOverlayClick($event)"></div>
-  <div class="modal-dialog">
+@if (isOpen || isClosing()) {
+  <div class="modal-overlay" (click)="onOverlayClick($event)" [class.closing]="isClosing()"></div>
+  <div class="modal-dialog" [class.closing]="isClosing()" (animationend)="onAnimationEnd($event)">
     <div class="modal-header">
       <h2><i class="pi pi-list"></i> Alle Stempelzeiten</h2>
       <button

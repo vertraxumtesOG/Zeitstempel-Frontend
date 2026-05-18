@@ -24,6 +24,8 @@ export class TimeLogModalComponent {
   @Input() userId: number | null = null;
   @Output() close = new EventEmitter<void>();
 
+  isClosing = signal(false);
+
   selectedMonth = signal('all');
 
   filteredLogins = computed(() => {
@@ -89,12 +91,24 @@ export class TimeLogModalComponent {
 
   onClose(): void {
     this.selectedMonth.set('all');
-    this.close.emit();
+    // start close animation, emit close after animation completes
+    if (!this.isClosing()) {
+      this.isClosing.set(true);
+    }
   }
 
   onOverlayClick(event: MouseEvent): void {
     if (event.target === event.currentTarget) {
       this.onClose();
+    }
+  }
+
+  onAnimationEnd(event: AnimationEvent): void {
+    // only act when closing animation finished
+    const name = event.animationName || '';
+    if (this.isClosing() && (name === 'fadeOut' || name === 'fadeOutUp')) {
+      this.isClosing.set(false);
+      this.close.emit();
     }
   }
 }
