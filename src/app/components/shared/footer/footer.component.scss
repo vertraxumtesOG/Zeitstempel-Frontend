@@ -1,0 +1,31 @@
+.footer {
+  border-top: 1px solid #e5e5e5;
+  background: #fafafa;
+  color: #333;
+}
+
+.footer__nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.footer__nav span {
+  color: #555;
+  cursor: default;
+  position: relative;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.footer__nav span:hover {
+  color: #000;
+  transform: translateY(-1px);
+}
