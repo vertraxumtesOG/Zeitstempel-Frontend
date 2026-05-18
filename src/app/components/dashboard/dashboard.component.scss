@@ -97,12 +97,8 @@
     background: #ff1744;
     border-color: #ff1744;
     box-shadow: 0 4px 12px rgba(255, 59, 48, 0.3);
-    transform: translateY(-1px);
   }
 
-  &:active {
-    transform: translateY(0);
-  }
 }
 
 .dashboard-main {
