@@ -13,7 +13,7 @@ import { AuthService } from '../../services/auth.service';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  styleUrls: ['./login.component.scss'],
 
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -22,6 +22,7 @@ export class LoginComponent {
   error = signal('');
 
   private authService = inject(AuthService);
+
 
   handleLogin(): void {
     if (!this.uid()) return;

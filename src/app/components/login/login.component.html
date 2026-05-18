@@ -1,38 +1,35 @@
-<div class="login-container">
-  <div class="login-card">
-    <h1 class="login-title"><i class="pi pi-lock"></i> Zeiterfassung</h1>
-    <p class="login-subtitle">Melde dich mit deiner Chip-UID an</p>
+<div class="login-wrap">
+  <div class="login-box">
+    <div class="top">
+      <div class="brand">Zeiterfassung</div>
+    </div>
 
-    <form (ngSubmit)="handleLogin()" class="login-form">
-      <div class="form-group">
-        <input
-          type="text"
-          [(ngModel)]="uid"
-          name="uid"
-          placeholder="Chip-UID eingeben"
-          class="login-input"
-          (keyup.enter)="handleLogin()"
-          inputmode="numeric"
-          aria-label="Chip-UID eingeben"
-        />
-      </div>
+    <p class="subtitle">Melde dich mit deiner Chip‑UID an</p>
 
-      <button type="submit" class="login-button" [disabled]="!uid()">
-        <i class="pi pi-sign-in"></i> Anmelden
+    <form (ngSubmit)="handleLogin()" class="form">
+      <input
+        type="text"
+        [ngModel]="uid()"
+        (ngModelChange)="uid.set($event)"
+        name="uid"
+        placeholder="Chip‑UID"
+        class="input"
+        (keyup.enter)="handleLogin()"
+        inputmode="numeric"
+        aria-label="Chip‑UID eingeben"
+      />
+
+      <button 
+        type="submit" 
+        class="btn btn-wide" 
+        [disabled]="!uid()"
+        >
+        Continue
       </button>
     </form>
 
     @if (error()) {
-      <div class="error-message">
-        <i class="pi pi-exclamation-circle"></i> {{ error() }}
-      </div>
+      <div class="error">{{ error() }}</div>
     }
-
-    <div class="demo-info">
-      <p>
-        <i class="pi pi-info-circle"></i> Demo-UIDs: <strong>12345</strong> oder
-        <strong>54321</strong>
-      </p>
-    </div>
   </div>
 </div>
