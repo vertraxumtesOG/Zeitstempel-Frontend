@@ -1,0 +1,59 @@
+@if (isOpen) {
+  <div class="modal-overlay" (click)="onOverlayClick($event)"></div>
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <h2><i class="pi pi-list"></i> Alle Stempelzeiten</h2>
+      <button class="modal-close" (click)="onClose()" aria-label="Modal schließen">
+        <i class="pi pi-times"></i>
+      </button>
+    </div>
+
+    <div class="modal-filter">
+      <label for="modal-month-filter"><i class="pi pi-filter"></i> Zeitraum:</label>
+      <select
+        id="modal-month-filter"
+        [ngModel]="selectedMonth()"
+        (ngModelChange)="selectedMonth.set($event)"
+        class="month-select"
+        >
+        <option value="all">Alle</option>
+        <option value="current">Dieser Monat</option>
+        <option value="last">Letzter Monat</option>
+        <option value="week">Diese Woche</option>
+      </select>
+    </div>
+
+    <div class="modal-content">
+      @if (filteredLogins().length > 0) {
+        <table>
+          <thead>
+            <tr>
+              <th>Datum</th>
+              <th>Uhrzeit</th>
+              <th>Typ</th>
+              <th>Dauer seit Eintritt</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (login of filteredLogins(); track login.id; let i = $index) {
+              <tr [class.highlighted]="login.loggedIn">
+                <td>{{ login.time | date : 'dd.MM.yyyy' }}</td>
+                <td>{{ login.time | date : 'HH:mm' }}</td>
+                <td>
+                  @if (login.loggedIn) {
+                    <span class="badge badge-in">Eintritt</span>
+                  } @else {
+                    <span class="badge badge-out">Austritt</span>
+                  }
+                </td>
+                <td class="duration-cell">{{ getDurationSinceEntry(i) }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      } @else {
+        <div class="empty-state">Keine Einträge für diesen Zeitraum</div>
+      }
+    </div>
+  </div>
+}

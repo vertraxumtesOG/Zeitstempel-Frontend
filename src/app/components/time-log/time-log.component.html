@@ -1,0 +1,88 @@
+<div class="timelog-container">
+  <header class="timelog-header">
+    <div class="header-content">
+      <button (click)="goBack()" class="back-button" aria-label="Zurück">
+        <i class="pi pi-arrow-left"></i> Zurück
+      </button>
+      <h1>Zeitprotokoll</h1>
+      <div style="width: 60px"></div>
+    </div>
+  </header>
+
+  <main class="timelog-main">
+    <section class="filter-section">
+      <h2>{{ userName().userName }}</h2>
+      <div class="filter-group">
+        <label for="month-filter"><i class="pi pi-filter"></i> Zeitraum:</label>
+        <select
+          id="month-filter"
+          [(ngModel)]="selectedMonth"
+          class="month-select"
+          aria-label="Nach Monat filtern"
+          >
+          <option value="all">Alle Einträge</option>
+          <option value="current">Dieser Monat</option>
+          <option value="last">Letzter Monat</option>
+          <option value="week">Diese Woche</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="table-section">
+      @if (filteredLogins().length > 0) {
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Datum</th>
+                <th>Uhrzeit</th>
+                <th>Typ</th>
+                <th>Dauer seit Eintritt</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (login of filteredLogins(); track login.id; let i = $index) {
+                <tr [class.highlighted]="login.loggedIn">
+                  <td>{{ login.time | date : 'dd.MM.yyyy' }}</td>
+                  <td>{{ login.time | date : 'HH:mm' }}</td>
+                  <td>
+                    @if (login.loggedIn) {
+                      <span class="badge badge-in">Eintritt</span>
+                    } @else {
+                      <span class="badge badge-out">Austritt</span>
+                    }
+                  </td>
+                  <td class="duration-cell">
+                    {{ getDurationSinceEntry(i) }}
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      } @else {
+        <div class="empty-state">
+          <p>Keine Stempelzeiten im ausgewählten Zeitraum</p>
+        </div>
+      }
+    </section>
+
+    <section class="summary-section">
+      <h3><i class="pi pi-table"></i> Zusammenfassung</h3>
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="summary-label"><i class="pi pi-hourglass"></i> Gesamt Arbeitszeit</div>
+          <div class="summary-value">{{ totalHours() }}h</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label"><i class="pi pi-arrow-right-to-line"></i> Eintritts-Einträge</div>
+          <div class="summary-value">{{ entryCount() }}</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label"><i class="pi pi-arrow-left-to-line"></i> Austritts-Einträge</div>
+          <div class="summary-value">{{ exitCount() }}</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
