@@ -10,11 +10,12 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { getLogins } from '../../../../lib/demo-data';
+import { ShModelComponent } from '../../shared/sh-model/sh-model.component';
 
 @Component({
   selector: 'app-time-log-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ShModelComponent],
   templateUrl: './time-log-modal.component.html',
   styleUrl: './time-log-modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -90,11 +91,5 @@ export class TimeLogModalComponent {
   onClose(): void {
     this.selectedMonth.set('all');
     this.close.emit();
-  }
-
-  onOverlayClick(event: MouseEvent): void {
-    if (event.target === event.currentTarget) {
-      this.onClose();
-    }
   }
 }
