@@ -1,10 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  computed,
-  inject,
-  signal,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
@@ -26,12 +20,8 @@ export class TimeLogComponent {
   userName = this.authService.authState$;
   private userId = computed(() => this.authService.getUserId());
 
-  entryCount = computed(
-    () => this.filteredLogins().filter((l) => l.loggedIn).length,
-  );
-  exitCount = computed(
-    () => this.filteredLogins().filter((l) => !l.loggedIn).length,
-  );
+  entryCount = computed(() => this.filteredLogins().filter((l) => l.loggedIn).length);
+  exitCount = computed(() => this.filteredLogins().filter((l) => !l.loggedIn).length);
 
   filteredLogins = computed(() => {
     const userId = this.userId();
@@ -53,16 +43,10 @@ export class TimeLogComponent {
     }
 
     if (month === 'last') {
-      const lastMonthStart = new Date(
-        today.getFullYear(),
-        today.getMonth() - 1,
-        1,
-      );
+      const lastMonthStart = new Date(today.getFullYear(), today.getMonth() - 1, 1);
       const lastMonthEnd = new Date(today.getFullYear(), today.getMonth(), 0);
       lastMonthEnd.setHours(23, 59, 59, 999);
-      return logins.filter(
-        (l) => l.time >= lastMonthStart && l.time <= lastMonthEnd,
-      );
+      return logins.filter((l) => l.time >= lastMonthStart && l.time <= lastMonthEnd);
     }
 
     if (month === 'week') {
@@ -101,12 +85,9 @@ export class TimeLogComponent {
 
     for (let i = index + 1; i < logins.length; i++) {
       if (logins[i].loggedIn) {
-        const durationMs =
-          currentLogin.time.getTime() - logins[i].time.getTime();
+        const durationMs = currentLogin.time.getTime() - logins[i].time.getTime();
         const hours = Math.floor(durationMs / (1000 * 60 * 60));
-        const minutes = Math.floor(
-          (durationMs % (1000 * 60 * 60)) / (1000 * 60),
-        );
+        const minutes = Math.floor((durationMs % (1000 * 60 * 60)) / (1000 * 60));
         return `${hours}h ${minutes}m`;
       }
     }

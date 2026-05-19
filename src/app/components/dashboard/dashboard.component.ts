@@ -1,10 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  computed,
-  inject,
-  signal,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShButtonComponent } from '../shared/sh-button/sh-button.component';
 import { AuthService } from '../../services/auth.service';
@@ -31,9 +25,7 @@ export class DashboardComponent {
     if (!userId) return null;
 
     const logins = getLogins(userId);
-    return logins.length > 0
-      ? { loggedIn: logins[0].loggedIn, time: logins[0].time }
-      : null;
+    return logins.length > 0 ? { loggedIn: logins[0].loggedIn, time: logins[0].time } : null;
   });
 
   statistics = computed(() => {
@@ -75,11 +67,7 @@ export class DashboardComponent {
     }
 
     if (month === 'last') {
-      const lastMonthStart = new Date(
-        today.getFullYear(),
-        today.getMonth() - 1,
-        1,
-      );
+      const lastMonthStart = new Date(today.getFullYear(), today.getMonth() - 1, 1);
       const lastMonthEnd = new Date(today.getFullYear(), today.getMonth(), 0);
       lastMonthEnd.setHours(23, 59, 59, 999);
       logins = allLogins.filter(
@@ -97,9 +85,7 @@ export class DashboardComponent {
       return emptyStats;
     }
 
-    const sortedLogins = [...logins].sort(
-      (a, b) => a.time.getTime() - b.time.getTime(),
-    );
+    const sortedLogins = [...logins].sort((a, b) => a.time.getTime() - b.time.getTime());
 
     let totalMinutes = 0;
     let inTime: Date | null = null;
@@ -118,8 +104,7 @@ export class DashboardComponent {
 
     const dayKeys = new Set(
       sortedLogins.map(
-        (login) =>
-          `${login.time.getFullYear()}-${login.time.getMonth()}-${login.time.getDate()}`,
+        (login) => `${login.time.getFullYear()}-${login.time.getMonth()}-${login.time.getDate()}`,
       ),
     );
 
@@ -129,10 +114,7 @@ export class DashboardComponent {
     return {
       totalHours,
       totalWorkDays,
-      avgHoursPerDay:
-        totalWorkDays > 0
-          ? Math.round((totalHours / totalWorkDays) * 10) / 10
-          : 0,
+      avgHoursPerDay: totalWorkDays > 0 ? Math.round((totalHours / totalWorkDays) * 10) / 10 : 0,
       firstEntry: sortedLogins[0]?.time ?? null,
       lastEntry: sortedLogins[sortedLogins.length - 1]?.time ?? null,
     };

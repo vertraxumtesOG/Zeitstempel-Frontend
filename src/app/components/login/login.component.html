@@ -6,7 +6,10 @@
 
     <p class="subtitle">Melde dich mit deiner Chip‑UID an</p>
 
-    <form (ngSubmit)="handleLogin()" class="form">
+    <form
+      (ngSubmit)="handleLogin()"
+      class="form"
+    >
       <input
         type="text"
         [ngModel]="uid()"

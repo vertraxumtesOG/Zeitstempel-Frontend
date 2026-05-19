@@ -1,24 +1,37 @@
 {
-  "printWidth": 80,
-  "singleQuote": true,
-  "arrowParens": "always",
-  "bracketSpacing": true,
-  "htmlWhitespaceSensitivity": "css",
-  "insertPragma": false,
-  "jsxBracketSameLine": false,
-  "jsxSingleQuote": true,
-  "proseWrap": "always",
-  "quoteProps": "as-needed",
-  "requirePragma": false,
-  "semi": true,
+  "printWidth": 100,
   "tabWidth": 2,
-  "trailingComma": "all",
   "useTabs": false,
+
+  "semi": true,
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "arrowParens": "always",
+
+  "quoteProps": "as-needed",
+
+  "htmlWhitespaceSensitivity": "ignore",
+  "singleAttributePerLine": true,
+
+  "bracketSameLine": false,
+
+  "proseWrap": "preserve",
+
   "overrides": [
     {
       "files": "*.html",
       "options": {
-        "parser": "angular"
+        "parser": "angular",
+        "printWidth": 120
+      }
+    },
+    {
+      "files": "*.scss",
+      "options": {
+        "singleQuote": false
       }
     }
   ]

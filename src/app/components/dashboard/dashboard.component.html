@@ -8,7 +8,8 @@
         (shClick)="logout()"
         aria-label="Abmelden"
       >
-        <i class="pi pi-sign-out"></i> Abmelden
+        <i class="pi pi-sign-out"></i>
+        Abmelden
       </sh-button>
     </div>
   </header>
@@ -21,17 +22,20 @@
     <section class="status-section">
       <div class="status-card">
         <div class="status-label">
-          <i class="pi pi-clock"></i> Aktueller Status
+          <i class="pi pi-clock"></i>
+          Aktueller Status
         </div>
         <div class="status-value">
           @if (currentStatus()?.loggedIn) {
-            <span class="status-in"
-              ><i class="pi pi-check-circle"></i> Eingestempelt</span
-            >
+            <span class="status-in">
+              <i class="pi pi-check-circle"></i>
+              Eingestempelt
+            </span>
           } @else {
-            <span class="status-out"
-              ><i class="pi pi-times-circle"></i> Ausgestempelt</span
-            >
+            <span class="status-out">
+              <i class="pi pi-times-circle"></i>
+              Ausgestempelt
+            </span>
           }
         </div>
         @if (currentStatus()) {
@@ -43,23 +47,29 @@
     </section>
 
     <section class="stats-section">
-      <h3><i class="pi pi-chart-bar"></i> Arbeitszeiten</h3>
+      <h3>
+        <i class="pi pi-chart-bar"></i>
+        Arbeitszeiten
+      </h3>
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-label">
-            <i class="pi pi-calendar-times"></i> Heute
+            <i class="pi pi-calendar-times"></i>
+            Heute
           </div>
           <div class="stat-value">{{ statistics()?.hoursToday || 0 }}h</div>
         </div>
         <div class="stat-card">
           <div class="stat-label">
-            <i class="pi pi-calendar"></i> Diese Woche
+            <i class="pi pi-calendar"></i>
+            Diese Woche
           </div>
           <div class="stat-value">{{ statistics()?.hoursThisWeek || 0 }}h</div>
         </div>
         <div class="stat-card">
           <div class="stat-label">
-            <i class="pi pi-calendar-minus"></i> Dieser Monat
+            <i class="pi pi-calendar-minus"></i>
+            Dieser Monat
           </div>
           <div class="stat-value">{{ statistics()?.hoursThisMonth || 0 }}h</div>
         </div>
@@ -68,7 +78,8 @@
 
     <section class="all-stats-section">
       <h3>
-        <i class="pi pi-chart-line"></i> Gesamtstatistik aller Mitarbeiter
+        <i class="pi pi-chart-line"></i>
+        Gesamtstatistik aller Mitarbeiter
       </h3>
 
       <div
@@ -121,19 +132,22 @@
       <div class="all-stats-grid">
         <div class="stat-card">
           <div class="stat-label">
-            <i class="pi pi-hourglass"></i> Gesamtstunden
+            <i class="pi pi-hourglass"></i>
+            Gesamtstunden
           </div>
           <div class="stat-value">{{ allTimeStats().totalHours }}h</div>
         </div>
         <div class="stat-card">
           <div class="stat-label">
-            <i class="pi pi-calendar"></i> Arbeitstage
+            <i class="pi pi-calendar"></i>
+            Arbeitstage
           </div>
           <div class="stat-value">{{ allTimeStats().totalWorkDays }}</div>
         </div>
         <div class="stat-card">
           <div class="stat-label">
-            <i class="pi pi-clock"></i> Durchschnitt / Tag
+            <i class="pi pi-clock"></i>
+            Durchschnitt / Tag
           </div>
           <div class="stat-value">{{ allTimeStats().avgHoursPerDay }}h</div>
         </div>
@@ -141,7 +155,10 @@
     </section>
 
     <section class="recent-section">
-      <h3><i class="pi pi-list"></i> Letzte Stempelzeiten</h3>
+      <h3>
+        <i class="pi pi-list"></i>
+        Letzte Stempelzeiten
+      </h3>
 
       <div class="logins-table">
         @if (recentLogins().length > 0) {
@@ -175,8 +192,13 @@
       </div>
 
       <div style="margin-top: 0.5rem">
-        <sh-button variant="primary" size="md" (shClick)="openLogModal()">
-          <i class="pi pi-list"></i> Alle Stempelzeiten ansehen
+        <sh-button
+          variant="primary"
+          size="md"
+          (shClick)="openLogModal()"
+        >
+          <i class="pi pi-list"></i>
+          Alle Stempelzeiten ansehen
         </sh-button>
       </div>
     </section>
@@ -186,6 +208,5 @@
     [isOpen]="showLogModal()"
     [userId]="userId()"
     (close)="closeLogModal()"
-  >
-  </app-time-log-modal>
+  ></app-time-log-modal>
 </div>

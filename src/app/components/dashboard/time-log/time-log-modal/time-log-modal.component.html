@@ -1,8 +1,13 @@
-<sh-model [isOpen]="isOpen" title="Alle Stempelzeiten" (close)="onClose()">
+<sh-model
+  [isOpen]="isOpen"
+  title="Alle Stempelzeiten"
+  (close)="onClose()"
+>
   <div class="modal-filter">
-    <label for="modal-month-filter"
-      ><i class="pi pi-filter"></i> Zeitraum:</label
-    >
+    <label for="modal-month-filter">
+      <i class="pi pi-filter"></i>
+      Zeitraum:
+    </label>
     <select
       id="modal-month-filter"
       [ngModel]="selectedMonth()"

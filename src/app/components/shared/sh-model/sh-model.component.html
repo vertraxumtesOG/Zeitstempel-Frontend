@@ -1,8 +1,14 @@
 @if (isOpen) {
-  <div class="modal-overlay" (click)="onOverlayClick($event)"></div>
+  <div
+    class="modal-overlay"
+    (click)="onOverlayClick($event)"
+  ></div>
   <div class="modal-dialog">
     <div class="modal-header">
-      <h2><i class="pi pi-window-maximize"></i> {{ title }}</h2>
+      <h2>
+        <i class="pi pi-window-maximize"></i>
+        {{ title }}
+      </h2>
       <button
         class="modal-close"
         (click)="onClose()"
