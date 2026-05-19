@@ -18,9 +18,21 @@
 
   &::before {
     background:
-      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.75), transparent 30%),
-      radial-gradient(circle at 80% 30%, rgba(226, 232, 240, 0.55), transparent 26%),
-      radial-gradient(circle at 70% 80%, rgba(203, 213, 225, 0.35), transparent 28%);
+      radial-gradient(
+        circle at 20% 20%,
+        rgba(255, 255, 255, 0.75),
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at 80% 30%,
+        rgba(226, 232, 240, 0.55),
+        transparent 26%
+      ),
+      radial-gradient(
+        circle at 70% 80%,
+        rgba(203, 213, 225, 0.35),
+        transparent 28%
+      );
     filter: blur(34px);
     opacity: 0.7;
   }
@@ -40,7 +52,11 @@
   width: 100%;
   max-width: 520px;
   padding: 36px 36px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(248, 250, 252, 0.42));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.7),
+    rgba(248, 250, 252, 0.42)
+  );
   border: 1px solid rgba(148, 163, 184, 0.28);
   border-radius: 22px;
   box-shadow:
