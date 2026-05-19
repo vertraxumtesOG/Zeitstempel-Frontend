@@ -1,7 +1,9 @@
 .footer {
-  border-top: 1px solid #e5e5e5;
-  background: #fafafa;
-  color: #333;
+  border-top: 1px solid rgba(148, 163, 184, 0.22);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.58), rgba(248, 250, 252, 0.34));
+  color: #334155;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .footer__nav {
@@ -17,7 +19,7 @@
 }
 
 .footer__nav span {
-  color: #555;
+  color: #475569;
   cursor: default;
   position: relative;
   transition:
@@ -26,6 +28,6 @@
 }
 
 .footer__nav span:hover {
-  color: #000;
+  color: #111827;
   transform: translateY(-1px);
 }
