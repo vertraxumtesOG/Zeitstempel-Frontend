@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 import { ShButtonComponent } from '../shared/sh-button/sh-button.component';
 import { AuthService } from '../../services/auth.service';
 import { getStatistics, getLogins } from '../../../lib/demo-data';
-import { TimeLogModalComponent } from '../time-log/time-log-modal/time-log-modal.component';
+import { TimeLogModalComponent } from './time-log/time-log-modal/time-log-modal.component';
 
 @Component({
   selector: 'app-dashboard',

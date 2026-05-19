@@ -7,8 +7,8 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { getLogins } from '../../../lib/demo-data';
+import { AuthService } from '../../../services/auth.service';
+import { getLogins } from '../../../../lib/demo-data';
 
 @Component({
   selector: 'app-time-log',
