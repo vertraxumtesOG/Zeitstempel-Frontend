@@ -1,28 +1,22 @@
 <div class="timelog-container">
-  <header class="timelog-header">
-    <div class="header-content">
-      <button
-        (click)="goBack()"
-        class="back-button"
-        aria-label="Zurück"
-      >
-        <i class="pi pi-arrow-left"></i>
-        Zurück
-      </button>
-      <div class="header-brand">
-        <img
-          ngSrc="/logo.png"
-          width="36"
-          height="36"
-          alt="Zeitstempel Logo"
-          class="header-logo"
-          priority
-        />
-        <h1>Zeitprotokoll</h1>
-      </div>
-      <div class="header-spacer" aria-hidden="true"></div>
-    </div>
-  </header>
+  <sh-navbar
+    title="Zeitprotokoll"
+    variant="solid"
+    align="center"
+    [maxWidth]="900"
+    [logoWidth]="36"
+    [logoHeight]="36"
+  >
+    <button
+      sh-navbar-left
+      (click)="goBack()"
+      class="back-button"
+      aria-label="Zurück"
+    >
+      <i class="pi pi-arrow-left"></i>
+      Zurück
+    </button>
+  </sh-navbar>
 
   <main class="timelog-main">
     <section class="filter-section">

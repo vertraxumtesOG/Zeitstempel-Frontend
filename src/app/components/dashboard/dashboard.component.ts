@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgOptimizedImage } from '@angular/common';
 import { ShButtonComponent } from '../shared/sh-button/sh-button.component';
+import { ShNavbarComponent } from '../shared/sh-navbar/sh-navbar.component';
 import { AuthService } from '../../services/auth.service';
 import { getStatistics, getLogins } from '../../../lib/demo-data';
 import { TimeLogModalComponent } from './time-log/time-log-modal/time-log-modal.component';
@@ -11,7 +11,7 @@ type StatsFilter = 'all' | 'current' | 'last' | 'week';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, TimeLogModalComponent, ShButtonComponent],
+  imports: [CommonModule, TimeLogModalComponent, ShButtonComponent, ShNavbarComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -9,73 +9,12 @@
   }
 }
 
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .timelog-container {
   min-height: 100vh;
   background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
 }
 
-.timelog-header {
-  background: white;
-  border-bottom: 1px solid #e0e0e0;
-  padding: 16px 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  animation: fadeInDown 0.5s ease-out;
-}
-
-.header-content {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-brand {
-  flex: 1;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
-}
-
-.header-logo {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-.header-spacer {
-  width: 84px;
-  flex-shrink: 0;
-}
-
-.timelog-header h1 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 700;
-  color: #000;
-  letter-spacing: -0.5px;
-}
-
 .back-button {
-  width: 84px;
   padding: 8px 12px;
   font-size: 14px;
   background: none;
@@ -350,14 +289,6 @@ table {
 @media (max-width: 600px) {
   .timelog-main {
     padding: 20px 16px;
-  }
-
-  .header-content {
-    gap: 12px;
-  }
-
-  .timelog-header h1 {
-    font-size: 20px;
   }
 
   .filter-section h2 {

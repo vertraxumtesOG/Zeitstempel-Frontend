@@ -1,0 +1,134 @@
+@keyframes navbarFadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sh-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 16px 0;
+  animation: navbarFadeInDown 0.5s ease-out;
+}
+
+.sh-navbar.variant-glass {
+  background: rgba(255, 255, 255, 0.58);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.sh-navbar.variant-solid {
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.navbar-content {
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-content.align-left {
+  justify-content: space-between;
+}
+
+.navbar-content.align-left .left-side {
+  display: none;
+}
+
+.navbar-content.align-left .navbar-brand {
+  margin-right: auto;
+}
+
+.navbar-content.align-left .right-side {
+  min-width: 0;
+  justify-content: flex-end;
+}
+
+.navbar-content.align-center {
+  justify-content: space-between;
+}
+
+.navbar-content.align-center .navbar-side {
+  width: 84px;
+  min-width: 84px;
+}
+
+.navbar-content.align-center .left-side {
+  justify-content: flex-start;
+}
+
+.navbar-content.align-center .right-side {
+  justify-content: flex-end;
+}
+
+.navbar-content.align-center .navbar-brand {
+  flex: 1;
+  justify-content: center;
+}
+
+.navbar-side {
+  display: inline-flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.navbar-logo {
+  width: var(--logo-size, 40px);
+  height: var(--logo-size, 40px);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.navbar-brand h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #111827;
+}
+
+.sh-navbar.variant-solid .navbar-brand h1 {
+  color: #000;
+}
+
+@media (max-width: 600px) {
+  .sh-navbar {
+    padding: 12px 0;
+  }
+
+  .navbar-content {
+    padding: 0 16px;
+  }
+
+  .navbar-content.align-center .navbar-side {
+    width: 72px;
+    min-width: 72px;
+  }
+
+  .navbar-brand {
+    gap: 8px;
+  }
+
+  .navbar-brand h1 {
+    font-size: 20px;
+  }
+}

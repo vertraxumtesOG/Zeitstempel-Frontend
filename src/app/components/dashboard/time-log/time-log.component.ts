@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { getLogins } from '../../../../lib/demo-data';
+import { ShNavbarComponent } from '../../shared/sh-navbar/sh-navbar.component';
 
 @Component({
   selector: 'app-time-log',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ShNavbarComponent],
   templateUrl: './time-log.component.html',
   styleUrl: './time-log.component.scss',
 

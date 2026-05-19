@@ -1,0 +1,32 @@
+<header
+  class="sh-navbar"
+  [class.variant-glass]="variant() === 'glass'"
+  [class.variant-solid]="variant() === 'solid'"
+>
+  <div
+    class="navbar-content"
+    [class.align-left]="align() === 'left'"
+    [class.align-center]="align() === 'center'"
+    [style.max-width.px]="maxWidth()"
+  >
+    <div class="navbar-side left-side">
+      <ng-content select="[sh-navbar-left]"></ng-content>
+    </div>
+
+    <div class="navbar-brand">
+      <img
+        ngSrc="/logo.png"
+        [width]="logoWidth()"
+        [height]="logoHeight()"
+        [alt]="logoAlt()"
+        class="navbar-logo"
+        priority
+      />
+      <h1>{{ title() }}</h1>
+    </div>
+
+    <div class="navbar-side right-side">
+      <ng-content select="[sh-navbar-right]"></ng-content>
+    </div>
+  </div>
+</header>

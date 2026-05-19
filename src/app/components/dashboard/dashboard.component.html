@@ -1,28 +1,16 @@
 <div class="dashboard-container">
-  <header class="dashboard-header">
-    <div class="header-content">
-      <div class="header-brand">
-        <img
-          ngSrc="/logo.png"
-          width="40"
-          height="40"
-          alt="Zeitstempel Logo"
-          class="header-logo"
-          priority
-        />
-        <h1>Zeiterfassung</h1>
-      </div>
-      <sh-button
-        variant="danger"
-        size="sm"
-        (shClick)="logout()"
-        aria-label="Abmelden"
-      >
-        <i class="pi pi-sign-out"></i>
-        Abmelden
-      </sh-button>
-    </div>
-  </header>
+  <sh-navbar title="Zeiterfassung" variant="glass" [maxWidth]="800">
+    <sh-button
+      sh-navbar-right
+      variant="danger"
+      size="sm"
+      (shClick)="logout()"
+      aria-label="Abmelden"
+    >
+      <i class="pi pi-sign-out"></i>
+      Abmelden
+    </sh-button>
+  </sh-navbar>
 
   <main class="dashboard-main">
     <section class="welcome-section">
