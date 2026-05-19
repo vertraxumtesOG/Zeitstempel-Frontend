@@ -1,42 +1,42 @@
-import { Component, ChangeDetectionStrategy, computed, inject, signal } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+  computed,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../../services/auth.service';
+import { ShModelComponent } from '../../shared/sh-model/sh-model.component';
 import { getLogins } from '../../../../lib/demo-data';
-import { ShNavbarComponent } from '../../shared/sh-navbar/sh-navbar.component';
 
 @Component({
-  selector: 'app-time-log',
+  selector: 'app-time-log-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule, ShNavbarComponent],
-  templateUrl: './time-log.component.html',
-  styleUrl: './time-log.component.scss',
-
+  imports: [CommonModule, FormsModule, ShModelComponent],
+  templateUrl: './time-log-modal.component.html',
+  styleUrl: './time-log-modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TimeLogComponent {
-  private authService = inject(AuthService);
+export class TimeLogModalComponent {
+  @Input() isOpen = false;
+  @Input() userId: number | null = null;
+  @Output() close = new EventEmitter<void>();
+
   selectedMonth = signal('all');
 
-  userName = this.authService.authState$;
-  private userId = computed(() => this.authService.getUserId());
-
-  entryCount = computed(() => this.filteredLogins().filter((l) => l.loggedIn).length);
-  exitCount = computed(() => this.filteredLogins().filter((l) => !l.loggedIn).length);
-
   filteredLogins = computed(() => {
-    const userId = this.userId();
+    const userId = this.userId;
     if (!userId) return [];
 
     const logins = getLogins(userId);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-
     const month = this.selectedMonth();
 
-    if (month === 'all') {
-      return logins;
-    }
+    if (month === 'all') return logins;
 
     if (month === 'current') {
       const monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
@@ -59,23 +59,6 @@ export class TimeLogComponent {
     return logins;
   });
 
-  totalHours = computed(() => {
-    const logins = this.filteredLogins();
-    let totalMinutes = 0;
-    let inTime: Date | null = null;
-
-    for (const login of logins) {
-      if (login.loggedIn) {
-        inTime = login.time;
-      } else if (inTime) {
-        totalMinutes += (login.time.getTime() - inTime.getTime()) / (1000 * 60);
-        inTime = null;
-      }
-    }
-
-    return Math.round((totalMinutes / 60) * 10) / 10;
-  });
-
   getDurationSinceEntry(index: number): string {
     const logins = this.filteredLogins();
     const currentLogin = logins[index];
@@ -96,7 +79,8 @@ export class TimeLogComponent {
     return '-';
   }
 
-  goBack(): void {
-    window.history.back();
+  onClose(): void {
+    this.selectedMonth.set('all');
+    this.close.emit();
   }
 }
