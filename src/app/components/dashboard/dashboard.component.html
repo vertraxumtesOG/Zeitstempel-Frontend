@@ -67,9 +67,14 @@
     </section>
 
     <section class="all-stats-section">
-      <h3><i class="pi pi-chart-line"></i> Gesamtstatistik aller Mitarbeiter</h3>
+      <h3>
+        <i class="pi pi-chart-line"></i> Gesamtstatistik aller Mitarbeiter
+      </h3>
 
-      <div class="all-stats-filters" aria-label="Zeitraumfilter Gesamtstatistik">
+      <div
+        class="all-stats-filters"
+        aria-label="Zeitraumfilter Gesamtstatistik"
+      >
         <button
           type="button"
           class="filter-chip"
@@ -115,15 +120,21 @@
 
       <div class="all-stats-grid">
         <div class="stat-card">
-          <div class="stat-label"><i class="pi pi-hourglass"></i> Gesamtstunden</div>
+          <div class="stat-label">
+            <i class="pi pi-hourglass"></i> Gesamtstunden
+          </div>
           <div class="stat-value">{{ allTimeStats().totalHours }}h</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label"><i class="pi pi-calendar"></i> Arbeitstage</div>
+          <div class="stat-label">
+            <i class="pi pi-calendar"></i> Arbeitstage
+          </div>
           <div class="stat-value">{{ allTimeStats().totalWorkDays }}</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label"><i class="pi pi-clock"></i> Durchschnitt / Tag</div>
+          <div class="stat-label">
+            <i class="pi pi-clock"></i> Durchschnitt / Tag
+          </div>
           <div class="stat-value">{{ allTimeStats().avgHoursPerDay }}h</div>
         </div>
       </div>

@@ -117,8 +117,9 @@ export class DashboardComponent {
     }
 
     const dayKeys = new Set(
-      sortedLogins.map((login) =>
-        `${login.time.getFullYear()}-${login.time.getMonth()}-${login.time.getDate()}`,
+      sortedLogins.map(
+        (login) =>
+          `${login.time.getFullYear()}-${login.time.getMonth()}-${login.time.getDate()}`,
       ),
     );
 
@@ -129,7 +130,9 @@ export class DashboardComponent {
       totalHours,
       totalWorkDays,
       avgHoursPerDay:
-        totalWorkDays > 0 ? Math.round((totalHours / totalWorkDays) * 10) / 10 : 0,
+        totalWorkDays > 0
+          ? Math.round((totalHours / totalWorkDays) * 10) / 10
+          : 0,
       firstEntry: sortedLogins[0]?.time ?? null,
       lastEntry: sortedLogins[sortedLogins.length - 1]?.time ?? null,
     };
