@@ -199,6 +199,77 @@
   }
 }
 
+.all-stats-section {
+  margin-bottom: 40px;
+  animation: fadeInUp 0.6s ease-out 0.25s both;
+
+  h3 {
+    margin: 0 0 12px 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    i {
+      font-size: 16px;
+    }
+  }
+}
+
+.all-stats-period {
+  margin-bottom: 16px;
+  color: #666;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.all-stats-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.filter-chip {
+  border: 1px solid #d0d0d0;
+  background: #fff;
+  color: #333;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 200ms ease;
+
+  &:hover {
+    border-color: #000;
+    color: #000;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 1px;
+  }
+
+  &.active {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+  }
+}
+
+.all-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -261,7 +332,7 @@
 
 .recent-section {
   margin-bottom: 40px;
-  animation: fadeInUp 0.6s ease-out 0.3s both;
+  animation: fadeInUp 0.6s ease-out 0.35s both;
 
   h3 {
     margin: 0 0 20px 0;
@@ -391,6 +462,14 @@ table {
 
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+
+  .all-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .all-stats-filters {
+    gap: 6px;
   }
 
   .view-all-button {
