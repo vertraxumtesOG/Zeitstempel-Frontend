@@ -1,25 +1,33 @@
-@if (isOpen) {
-  <div
-    class="modal-overlay"
-    (click)="onOverlayClick($event)"
-  ></div>
-  <div class="modal-dialog">
-    <div class="modal-header">
-      <h2>
-        <i class="pi pi-list"></i>
-        {{ title }}
-      </h2>
-      <button
-        class="modal-close"
-        (click)="onClose()"
-        aria-label="Modal schließen"
-      >
-        <i class="pi pi-times"></i>
-      </button>
-    </div>
+@if (visible) {
+  <div>
+    <div
+      class="modal-overlay"
+      (click)="onOverlayClick($event)"
+      [class.closing]="closing"
+    ></div>
 
-    <div class="modal-content">
-      <ng-content></ng-content>
+    <div
+      class="modal-dialog"
+      [class.closing]="closing"
+      (animationend)="onAnimationEnd()"
+    >
+      <div class="modal-header">
+        <h2>
+          <i class="pi pi-list"></i>
+          {{ title }}
+        </h2>
+        <button
+          class="modal-close"
+          (click)="onClose()"
+          aria-label="Modal schließen"
+        >
+          <i class="pi pi-times"></i>
+        </button>
+      </div>
+
+      <div class="modal-content">
+        <ng-content></ng-content>
+      </div>
     </div>
   </div>
 }

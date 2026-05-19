@@ -10,7 +10,28 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShModelComponent {
-  @Input() isOpen = false;
+  private _isOpen = false;
+  visible = false;
+  closing = false;
+
+  @Input()
+  set isOpen(value: boolean) {
+    if (value) {
+      this._isOpen = true;
+      this.visible = true;
+      this.closing = false;
+    } else {
+      this._isOpen = false;
+      if (this.visible) {
+        this.closing = true;
+      }
+    }
+  }
+
+  get isOpen(): boolean {
+    return this._isOpen;
+  }
+
   @Input() title = '';
   @Output() close = new EventEmitter<void>();
 
@@ -21,6 +42,13 @@ export class ShModelComponent {
   onOverlayClick(event: MouseEvent): void {
     if (event.target === event.currentTarget) {
       this.onClose();
+    }
+  }
+
+  onAnimationEnd(): void {
+    if (this.closing) {
+      this.visible = false;
+      this.closing = false;
     }
   }
 }
