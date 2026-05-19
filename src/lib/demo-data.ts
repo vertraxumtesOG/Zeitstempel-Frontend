@@ -71,6 +71,55 @@ const demoLogins: Login[] = [
   { id: 42, userId: 2, time: new Date('2026-02-15T16:30:00'), loggedIn: false },
   { id: 43, userId: 2, time: new Date('2026-01-15T09:05:00'), loggedIn: true },
   { id: 44, userId: 2, time: new Date('2026-01-15T16:55:00'), loggedIn: false },
+  { id: 45, userId: 1, time: new Date('2026-05-20T08:05:00'), loggedIn: true },
+  { id: 46, userId: 1, time: new Date('2026-05-20T17:10:00'), loggedIn: false },
+  { id: 47, userId: 2, time: new Date('2026-05-20T08:55:00'), loggedIn: true },
+  { id: 48, userId: 2, time: new Date('2026-05-20T16:50:00'), loggedIn: false },
+
+  { id: 49, userId: 1, time: new Date('2026-05-14T08:10:00'), loggedIn: true },
+  { id: 50, userId: 1, time: new Date('2026-05-14T16:55:00'), loggedIn: false },
+  { id: 51, userId: 2, time: new Date('2026-05-14T09:00:00'), loggedIn: true },
+  { id: 52, userId: 2, time: new Date('2026-05-14T17:00:00'), loggedIn: false },
+
+  { id: 53, userId: 1, time: new Date('2026-05-07T08:00:00'), loggedIn: true },
+  { id: 54, userId: 1, time: new Date('2026-05-07T17:00:00'), loggedIn: false },
+  { id: 55, userId: 2, time: new Date('2026-05-07T08:45:00'), loggedIn: true },
+  { id: 56, userId: 2, time: new Date('2026-05-07T16:45:00'), loggedIn: false },
+
+  { id: 57, userId: 1, time: new Date('2026-04-30T08:05:00'), loggedIn: true },
+  { id: 58, userId: 1, time: new Date('2026-04-30T16:50:00'), loggedIn: false },
+  { id: 59, userId: 2, time: new Date('2026-04-30T08:50:00'), loggedIn: true },
+  { id: 60, userId: 2, time: new Date('2026-04-30T17:05:00'), loggedIn: false },
+
+  { id: 61, userId: 1, time: new Date('2026-04-23T08:10:00'), loggedIn: true },
+  { id: 62, userId: 1, time: new Date('2026-04-23T17:15:00'), loggedIn: false },
+  { id: 63, userId: 2, time: new Date('2026-04-23T08:45:00'), loggedIn: true },
+  { id: 64, userId: 2, time: new Date('2026-04-23T16:55:00'), loggedIn: false },
+
+  { id: 65, userId: 1, time: new Date('2026-04-16T08:00:00'), loggedIn: true },
+  { id: 66, userId: 1, time: new Date('2026-04-16T17:05:00'), loggedIn: false },
+  { id: 67, userId: 2, time: new Date('2026-04-16T08:50:00'), loggedIn: true },
+  { id: 68, userId: 2, time: new Date('2026-04-16T16:50:00'), loggedIn: false },
+
+  { id: 69, userId: 1, time: new Date('2026-04-09T08:15:00'), loggedIn: true },
+  { id: 70, userId: 1, time: new Date('2026-04-09T17:00:00'), loggedIn: false },
+  { id: 71, userId: 2, time: new Date('2026-04-09T09:05:00'), loggedIn: true },
+  { id: 72, userId: 2, time: new Date('2026-04-09T16:40:00'), loggedIn: false },
+
+  { id: 73, userId: 1, time: new Date('2026-04-02T08:00:00'), loggedIn: true },
+  { id: 74, userId: 1, time: new Date('2026-04-02T17:10:00'), loggedIn: false },
+  { id: 75, userId: 2, time: new Date('2026-04-02T08:55:00'), loggedIn: true },
+  { id: 76, userId: 2, time: new Date('2026-04-02T16:55:00'), loggedIn: false },
+
+  { id: 77, userId: 1, time: new Date('2026-03-26T08:10:00'), loggedIn: true },
+  { id: 78, userId: 1, time: new Date('2026-03-26T17:05:00'), loggedIn: false },
+  { id: 79, userId: 2, time: new Date('2026-03-26T09:00:00'), loggedIn: true },
+  { id: 80, userId: 2, time: new Date('2026-03-26T16:45:00'), loggedIn: false },
+
+  { id: 81, userId: 1, time: new Date('2026-03-19T08:05:00'), loggedIn: true },
+  { id: 82, userId: 1, time: new Date('2026-03-19T17:00:00'), loggedIn: false },
+  { id: 83, userId: 2, time: new Date('2026-03-19T08:55:00'), loggedIn: true },
+  { id: 84, userId: 2, time: new Date('2026-03-19T16:50:00'), loggedIn: false },
 ];
 
 // Demo-Service-Funktionen
