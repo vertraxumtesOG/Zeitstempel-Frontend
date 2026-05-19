@@ -59,6 +59,27 @@ export class TimeLogModalComponent {
     return logins;
   });
 
+  summary = computed(() => {
+    const logins = this.filteredLogins();
+    let totalMs = 0;
+
+    for (let i = 0; i < logins.length; i++) {
+      const entry = logins[i];
+      if (!entry.loggedIn) {
+        for (let j = i + 1; j < logins.length; j++) {
+          if (logins[j].loggedIn) {
+            totalMs += entry.time.getTime() - logins[j].time.getTime();
+            break;
+          }
+        }
+      }
+    }
+
+    const hours = Math.floor(totalMs / (1000 * 60 * 60));
+    const minutes = Math.floor((totalMs % (1000 * 60 * 60)) / (1000 * 60));
+
+    return { totalEntries: logins.length, totalMs, totalHours: hours, totalMinutes: minutes };
+  });
   getDurationSinceEntry(index: number): string {
     const logins = this.filteredLogins();
     const currentLogin = logins[index];

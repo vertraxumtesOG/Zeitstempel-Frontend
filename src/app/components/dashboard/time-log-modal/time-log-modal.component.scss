@@ -53,6 +53,21 @@
   }
 }
 
+.modal-summary {
+  display: flex;
+  gap: 24px;
+  padding: 12px 24px;
+  align-items: center;
+  border-bottom: 1px solid #f5f5f5;
+  background: #fff;
+
+  .summary-item {
+    font-size: 13px;
+    font-weight: 700;
+    color: #333;
+  }
+}
+
 .modal-content {
   overflow-y: auto;
   flex: 1;

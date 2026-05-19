@@ -21,6 +21,17 @@
     </select>
   </div>
 
+  <div class="modal-summary">
+    <div class="summary-item">
+      <strong>Einträge:</strong>
+      {{ filteredLogins().length }}
+    </div>
+    <div class="summary-item">
+      <strong>Gesamtzeit:</strong>
+      {{ summary().totalHours }}h {{ summary().totalMinutes }}m
+    </div>
+  </div>
+
   <div class="modal-content">
     @if (filteredLogins().length > 0) {
       <table>
