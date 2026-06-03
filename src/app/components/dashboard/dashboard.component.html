@@ -59,21 +59,21 @@
             <i class="pi pi-calendar-times"></i>
             Heute
           </div>
-          <div class="stat-value">{{ statistics()?.hoursToday || 0 }}h</div>
+          <div class="stat-value">{{ statistics().hoursToday }}h</div>
         </div>
         <div class="stat-card">
           <div class="stat-label">
             <i class="pi pi-calendar"></i>
             Diese Woche
           </div>
-          <div class="stat-value">{{ statistics()?.hoursThisWeek || 0 }}h</div>
+          <div class="stat-value">{{ statistics().hoursThisWeek }}h</div>
         </div>
         <div class="stat-card">
           <div class="stat-label">
             <i class="pi pi-calendar-minus"></i>
             Dieser Monat
           </div>
-          <div class="stat-value">{{ statistics()?.hoursThisMonth || 0 }}h</div>
+          <div class="stat-value">{{ statistics().hoursThisMonth }}h</div>
         </div>
       </div>
     </section>
@@ -208,7 +208,7 @@
 
   <app-time-log-modal
     [isOpen]="showLogModal()"
-    [userId]="userId()"
+    [logins]="allLogins()"
     (close)="closeLogModal()"
   ></app-time-log-modal>
 </div>

@@ -10,7 +10,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ShModelComponent } from '../../shared/sh-model/sh-model.component';
-import { getLogins } from '../../../../lib/demo-data';
+import { Login } from '../../../services/api.service';
 
 @Component({
   selector: 'app-time-log-modal',
@@ -22,16 +22,15 @@ import { getLogins } from '../../../../lib/demo-data';
 })
 export class TimeLogModalComponent {
   @Input() isOpen = false;
-  @Input() userId: number | null = null;
+  @Input() logins: Login[] = [];
   @Output() close = new EventEmitter<void>();
 
   selectedMonth = signal('all');
 
   filteredLogins = computed(() => {
-    const userId = this.userId;
-    if (!userId) return [];
+    const logins = this.logins;
+    if (!logins.length) return [];
 
-    const logins = getLogins(userId);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const month = this.selectedMonth();
@@ -80,13 +79,12 @@ export class TimeLogModalComponent {
 
     return { totalEntries: logins.length, totalMs, totalHours: hours, totalMinutes: minutes };
   });
+
   getDurationSinceEntry(index: number): string {
     const logins = this.filteredLogins();
     const currentLogin = logins[index];
 
-    if (currentLogin.loggedIn) {
-      return '-';
-    }
+    if (currentLogin.loggedIn) return '-';
 
     for (let i = index + 1; i < logins.length; i++) {
       if (logins[i].loggedIn) {

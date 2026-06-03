@@ -10,7 +10,6 @@ import { AuthService } from '../../services/auth.service';
   imports: [CommonModule, FormsModule, ShButtonComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
@@ -28,11 +27,13 @@ export class LoginComponent {
       return;
     }
 
-    if (this.authService.login(uidNumber)) {
-      this.error.set('');
-    } else {
-      this.error.set('Chip-UID nicht gefunden');
-      this.uid.set('');
-    }
+    this.authService.login(uidNumber).subscribe((success) => {
+      if (success) {
+        this.error.set('');
+      } else {
+        this.error.set('Chip-UID nicht gefunden');
+        this.uid.set('');
+      }
+    });
   }
 }

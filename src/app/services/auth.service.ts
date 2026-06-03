@@ -1,6 +1,7 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { getMitarbeiterByUid } from '../../lib/demo-data';
+import { Observable, of, switchMap, map, catchError } from 'rxjs';
+import { ApiService } from './api.service';
 
 interface AuthState {
   userId: number | null;
@@ -20,24 +21,36 @@ export class AuthService {
 
   authState$ = this.authState.asReadonly();
 
-  constructor(private router: Router) {
+  private router = inject(Router);
+  private apiService = inject(ApiService);
+
+  constructor() {
     this.restoreSession();
   }
 
-  login(uid: number): boolean {
-    const mitarbeiter = getMitarbeiterByUid(uid);
-    if (mitarbeiter) {
-      const state: AuthState = {
-        userId: mitarbeiter.id,
-        userName: `${mitarbeiter.firstName} ${mitarbeiter.lastName}`,
-        isAuthenticated: true,
-      };
-      this.authState.set(state);
-      localStorage.setItem('zeitstempel_auth', JSON.stringify(state));
-      this.router.navigate(['/dashboard']);
-      return true;
-    }
-    return false;
+  login(uid: number): Observable<boolean> {
+    return this.apiService.postLogin(uid).pipe(
+      switchMap((response) =>
+        this.apiService.getMitarbeiter().pipe(
+          map((employees) => {
+            const emp = employees.find((e) => e.id === response.user_id);
+            if (emp) {
+              const state: AuthState = {
+                userId: emp.id,
+                userName: `${emp.firstName} ${emp.lastName}`,
+                isAuthenticated: true,
+              };
+              this.authState.set(state);
+              localStorage.setItem('zeitstempel_auth', JSON.stringify(state));
+              this.router.navigate(['/dashboard']);
+              return true;
+            }
+            return false;
+          }),
+        ),
+      ),
+      catchError(() => of(false)),
+    );
   }
 
   logout(): void {
