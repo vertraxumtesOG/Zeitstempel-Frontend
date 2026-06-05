@@ -58,6 +58,6 @@ export class ApiService {
   }
 
   postLogin(uid: number): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.base}/login`, { uid });
+    return this.http.post<LoginResponse>(`${this.base}/valid_chip`, { uid });
   }
 }

@@ -33,7 +33,8 @@ export class AuthService {
       switchMap((response) =>
         this.apiService.getMitarbeiter().pipe(
           map((employees) => {
-            const emp = employees.find((e) => e.id === response.user_id);
+            const emp = employees.find((e) => e.uid === response.user_id);
+            console.log(response.user_id, employees)
             if (emp) {
               const state: AuthState = {
                 userId: emp.id,
