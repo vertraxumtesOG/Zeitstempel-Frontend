@@ -76,6 +76,14 @@
   border-radius: 6px;
 }
 
+.modal-dialog.compact {
+  width: auto;
+  min-width: 360px;
+  max-width: 480px;
+  height: auto;
+  max-height: 90vh;
+}
+
 .modal-content {
   flex: 1;
   display: flex;

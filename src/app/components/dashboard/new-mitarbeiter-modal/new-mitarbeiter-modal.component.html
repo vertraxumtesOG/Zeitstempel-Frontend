@@ -1,0 +1,70 @@
+<sh-model
+  [isOpen]="isOpen"
+  title="Neuen Mitarbeiter anlegen"
+  size="compact"
+  (close)="onClose()"
+>
+  <form class="new-mitarbeiter-form" (ngSubmit)="onSubmit()">
+    <div class="form-field">
+      <label for="firstName">Vorname</label>
+      <input
+        id="firstName"
+        type="text"
+        [(ngModel)]="firstName"
+        name="firstName"
+        placeholder="Vorname"
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="form-field">
+      <label for="lastName">Nachname</label>
+      <input
+        id="lastName"
+        type="text"
+        [(ngModel)]="lastName"
+        name="lastName"
+        placeholder="Nachname"
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="form-field">
+      <label for="uid">UID (Chip-Nummer)</label>
+      <input
+        id="uid"
+        type="text"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        [(ngModel)]="uid"
+        name="uid"
+        placeholder="z.B. 12345"
+        autocomplete="off"
+      />
+    </div>
+
+    @if (errorMsg()) {
+      <div class="form-error">{{ errorMsg() }}</div>
+    }
+
+    <div class="form-actions">
+      <sh-button
+        variant="outline"
+        size="md"
+        type="button"
+        (shClick)="onClose()"
+      >
+        Abbrechen
+      </sh-button>
+      <sh-button
+        variant="primary"
+        size="md"
+        [disabled]="isLoading()"
+        (shClick)="onSubmit()"
+      >
+        <i class="pi pi-check"></i>
+        {{ isLoading() ? 'Speichern...' : 'Speichern' }}
+      </sh-button>
+    </div>
+  </form>
+</sh-model>

@@ -41,6 +41,7 @@ export class ShModelComponent implements OnDestroy {
   }
 
   @Input() title = '';
+  @Input() size: 'full' | 'compact' = 'full';
   @Output() close = new EventEmitter<void>();
 
   onClose(): void {

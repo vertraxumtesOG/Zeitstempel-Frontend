@@ -9,6 +9,7 @@
     <div
       class="modal-dialog"
       [class.closing]="closing"
+      [class.compact]="size === 'compact'"
       (animationend)="onAnimationEnd()"
     >
       <div class="modal-header">

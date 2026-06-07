@@ -6,6 +6,16 @@
   >
     <sh-button
       sh-navbar-right
+      variant="primary"
+      size="sm"
+      (shClick)="openNewMitarbeiterModal()"
+      aria-label="Neuen Mitarbeiter anlegen"
+    >
+      <i class="pi pi-user-plus"></i>
+      Mitarbeiter anlegen
+    </sh-button>
+    <sh-button
+      sh-navbar-right
       variant="danger"
       size="sm"
       (shClick)="logout()"
@@ -253,4 +263,9 @@
     [initialFilter]="statsFilter()"
     (close)="closeAllLogsModal()"
   ></app-all-logs-modal>
+
+  <app-new-mitarbeiter-modal
+    [isOpen]="showNewMitarbeiterModal()"
+    (close)="closeNewMitarbeiterModal()"
+  ></app-new-mitarbeiter-modal>
 </div>

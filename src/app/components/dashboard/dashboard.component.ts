@@ -8,13 +8,14 @@ import { AuthService } from '../../services/auth.service';
 import { ApiService, Login, LoginWithEmployee } from '../../services/api.service';
 import { TimeLogModalComponent } from './time-log-modal/time-log-modal.component';
 import { AllLogsModalComponent } from './all-logs-modal/all-logs-modal.component';
+import { NewMitarbeiterModalComponent } from './new-mitarbeiter-modal/new-mitarbeiter-modal.component';
 
 type StatsFilter = 'all' | 'current' | 'last' | 'week';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, TimeLogModalComponent, AllLogsModalComponent, ShButtonComponent, ShNavbarComponent],
+  imports: [CommonModule, TimeLogModalComponent, AllLogsModalComponent, NewMitarbeiterModalComponent, ShButtonComponent, ShNavbarComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -132,6 +133,7 @@ export class DashboardComponent {
 
   showLogModal = signal(false);
   showAllLogsModal = signal(false);
+  showNewMitarbeiterModal = signal(false);
 
   allEmployeeLogins = toSignal(
     toObservable(this.refreshTrigger).pipe(
@@ -139,6 +141,14 @@ export class DashboardComponent {
     ),
     { initialValue: [] as LoginWithEmployee[] },
   );
+
+  openNewMitarbeiterModal(): void {
+    this.showNewMitarbeiterModal.set(true);
+  }
+
+  closeNewMitarbeiterModal(): void {
+    this.showNewMitarbeiterModal.set(false);
+  }
 
   openLogModal(): void {
     this.showLogModal.set(true);

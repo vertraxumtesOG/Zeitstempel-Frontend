@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map, catchError, of } from 'rxjs';
+import { Observable, map, catchError, of, switchMap } from 'rxjs';
 
 export interface Mitarbeiter {
   id: number;
@@ -81,6 +81,16 @@ export class ApiService {
           .sort((a, b) => b.time.getTime() - a.time.getTime()),
       ),
       catchError(() => of([] as LoginWithEmployee[])),
+    );
+  }
+
+  postMitarbeiter(firstName: string, lastName: string, uid: number): Observable<{ status: string }> {
+    return this.http.post<{ status: string }>(`${this.base}/mitarbeiter`, {
+      first_name: firstName,
+      last_name: lastName,
+      uid,
+    }).pipe(
+      switchMap(() => this.http.post<{ status: string }>(`${this.base}/chip`, { uid })),
     );
   }
 
