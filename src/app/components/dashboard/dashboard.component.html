@@ -178,6 +178,17 @@
           <div class="stat-value">{{ allTimeStats().avgHoursPerDay }}h</div>
         </div>
       </div>
+
+      <div style="margin-top: 0.5rem">
+        <sh-button
+          variant="primary"
+          size="md"
+          (shClick)="openAllLogsModal()"
+        >
+          <i class="pi pi-users"></i>
+          Alle Stempelzeiten aller Mitarbeiter
+        </sh-button>
+      </div>
     </section>
 
     <section class="recent-section">
@@ -235,4 +246,11 @@
     [logins]="allLogins()"
     (close)="closeLogModal()"
   ></app-time-log-modal>
+
+  <app-all-logs-modal
+    [isOpen]="showAllLogsModal()"
+    [logins]="allEmployeeLogins()"
+    [initialFilter]="statsFilter()"
+    (close)="closeAllLogsModal()"
+  ></app-all-logs-modal>
 </div>

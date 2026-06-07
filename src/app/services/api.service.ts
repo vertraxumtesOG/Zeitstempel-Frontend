@@ -16,6 +16,15 @@ export interface Login {
   loggedIn: boolean;
 }
 
+export interface LoginWithEmployee {
+  id: number;
+  userId: number;
+  time: Date;
+  loggedIn: boolean;
+  firstName: string;
+  lastName: string;
+}
+
 interface LoginResponse {
   status: string;
   user_id: number;
@@ -54,6 +63,24 @@ export class ApiService {
           .sort((a, b) => b.time.getTime() - a.time.getTime()),
       ),
       catchError(() => of([] as Login[])),
+    );
+  }
+
+  getAllLoginsWithEmployee(): Observable<LoginWithEmployee[]> {
+    return this.http.get<any[][]>(`${this.base}/login_mitarbeiter`).pipe(
+      map((rows) =>
+        rows
+          .map(([id, userId, time, loggedIn, , firstName, lastName]) => ({
+            id,
+            userId,
+            time: new Date(time),
+            loggedIn: Boolean(loggedIn),
+            firstName: firstName ?? '',
+            lastName: lastName ?? '',
+          }))
+          .sort((a, b) => b.time.getTime() - a.time.getTime()),
+      ),
+      catchError(() => of([] as LoginWithEmployee[])),
     );
   }
 

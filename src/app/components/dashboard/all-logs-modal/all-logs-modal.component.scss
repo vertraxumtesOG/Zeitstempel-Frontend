@@ -2,9 +2,15 @@
   padding: 16px 24px;
   border-bottom: 1px solid #f0f0f0;
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 16px;
   background: #fafafa;
+
+  .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
   label {
     font-size: 14px;
@@ -15,6 +21,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
+    white-space: nowrap;
 
     i {
       font-size: 14px;
@@ -120,10 +127,9 @@
     }
   }
 
-  .duration-cell {
-    font-size: 13px;
-    color: #999;
-    font-weight: 600;
+  .name-cell {
+    font-weight: 700;
+    color: #000;
   }
 
   .badge {
