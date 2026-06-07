@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { toSignal, toObservable } from '@angular/core/rxjs-interop';
-import { switchMap, of } from 'rxjs';
+import { switchMap, of, combineLatest, map } from 'rxjs';
 import { ShButtonComponent } from '../shared/sh-button/sh-button.component';
 import { ShNavbarComponent } from '../shared/sh-navbar/sh-navbar.component';
 import { AuthService } from '../../services/auth.service';
@@ -25,10 +25,30 @@ export class DashboardComponent {
   userName = this.authService.authState$;
 
   private userId = computed(() => this.authService.getUserId());
+  private refreshTrigger = signal(0);
+
+  isStempelnLoading = signal(false);
+
+  // Resolves the uid from auth state; falls back to the API for old sessions without stored uid
+  private effectiveUid = toSignal(
+    combineLatest([
+      toObservable(computed(() => this.authService.getUserId())),
+      toObservable(computed(() => this.authService.getUserUid())),
+    ]).pipe(
+      switchMap(([userId, userUid]) => {
+        if (userUid != null) return of(userUid);
+        if (userId == null) return of(null as number | null);
+        return this.apiService.getMitarbeiter().pipe(
+          map((employees) => employees.find((e) => e.id === userId)?.uid ?? null),
+        );
+      }),
+    ),
+    { initialValue: null as number | null },
+  );
 
   allLogins = toSignal(
-    toObservable(this.userId).pipe(
-      switchMap((id) => (id ? this.apiService.getLoginsByUserId(id) : of([] as Login[]))),
+    combineLatest([toObservable(this.userId), toObservable(this.refreshTrigger)]).pipe(
+      switchMap(([id]) => (id ? this.apiService.getLoginsByUserId(id) : of([] as Login[]))),
     ),
     { initialValue: [] as Login[] },
   );
@@ -120,6 +140,22 @@ export class DashboardComponent {
 
   setStatsFilter(filter: StatsFilter): void {
     this.statsFilter.set(filter);
+  }
+
+  stempeln(): void {
+    const uid = this.effectiveUid();
+    if (uid == null || this.isStempelnLoading()) return;
+
+    this.isStempelnLoading.set(true);
+    this.apiService.postStempelzeit(uid).subscribe({
+      next: () => {
+        this.refreshTrigger.update((v) => v + 1);
+        this.isStempelnLoading.set(false);
+      },
+      error: () => {
+        this.isStempelnLoading.set(false);
+      },
+    });
   }
 
   logout(): void {

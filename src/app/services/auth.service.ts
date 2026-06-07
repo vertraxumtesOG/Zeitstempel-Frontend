@@ -5,6 +5,7 @@ import { ApiService } from './api.service';
 
 interface AuthState {
   userId: number | null;
+  userUid: number | null;
   userName: string | null;
   isAuthenticated: boolean;
 }
@@ -15,6 +16,7 @@ interface AuthState {
 export class AuthService {
   private authState = signal<AuthState>({
     userId: null,
+    userUid: null,
     userName: null,
     isAuthenticated: false,
   });
@@ -38,6 +40,7 @@ export class AuthService {
             if (emp) {
               const state: AuthState = {
                 userId: emp.id,
+                userUid: emp.uid,
                 userName: `${emp.firstName} ${emp.lastName}`,
                 isAuthenticated: true,
               };
@@ -57,6 +60,7 @@ export class AuthService {
   logout(): void {
     this.authState.set({
       userId: null,
+      userUid: null,
       userName: null,
       isAuthenticated: false,
     });
@@ -72,6 +76,10 @@ export class AuthService {
     return this.authState().userId;
   }
 
+  getUserUid(): number | null {
+    return this.authState().userUid;
+  }
+
   getUserName(): string | null {
     return this.authState().userName;
   }
@@ -80,7 +88,8 @@ export class AuthService {
     const stored = localStorage.getItem('zeitstempel_auth');
     if (stored) {
       try {
-        const state = JSON.parse(stored) as AuthState;
+        const raw = JSON.parse(stored) as AuthState;
+        const state: AuthState = { ...raw, userUid: raw.userUid ?? null };
         this.authState.set(state);
       } catch {
         localStorage.removeItem('zeitstempel_auth');

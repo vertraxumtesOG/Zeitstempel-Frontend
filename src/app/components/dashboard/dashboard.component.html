@@ -46,6 +46,30 @@
           </div>
         }
       </div>
+
+      <div class="stempel-actions">
+        @if (currentStatus()?.loggedIn) {
+          <sh-button
+            variant="danger"
+            size="lg"
+            [disabled]="isStempelnLoading()"
+            (shClick)="stempeln()"
+          >
+            <i class="pi pi-sign-out"></i>
+            Ausstempeln
+          </sh-button>
+        } @else {
+          <sh-button
+            variant="primary"
+            size="lg"
+            [disabled]="isStempelnLoading()"
+            (shClick)="stempeln()"
+          >
+            <i class="pi pi-sign-in"></i>
+            Einstempeln
+          </sh-button>
+        }
+      </div>
     </section>
 
     <section class="stats-section">
