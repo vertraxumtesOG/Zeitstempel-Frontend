@@ -71,6 +71,7 @@
 .modal-content {
   overflow-y: auto;
   flex: 1;
+  min-height: 0;
 
   table {
     width: 100%;

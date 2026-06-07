@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './sh-model.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ShModelComponent {
+export class ShModelComponent implements OnDestroy {
   private _isOpen = false;
   visible = false;
   closing = false;
@@ -20,6 +20,7 @@ export class ShModelComponent {
       this._isOpen = true;
       this.visible = true;
       this.closing = false;
+      document.body.style.overflow = 'hidden';
     } else {
       this._isOpen = false;
       if (this.visible) {
@@ -49,6 +50,11 @@ export class ShModelComponent {
     if (this.closing) {
       this.visible = false;
       this.closing = false;
+      document.body.style.overflow = '';
     }
+  }
+
+  ngOnDestroy(): void {
+    document.body.style.overflow = '';
   }
 }
