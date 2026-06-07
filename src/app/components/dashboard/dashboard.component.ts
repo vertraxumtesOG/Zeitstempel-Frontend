@@ -92,7 +92,8 @@ export class DashboardComponent {
       filtered = logins.filter((l) => l.time >= lastMonthStart && l.time <= lastMonthEnd);
     } else if (filter === 'week') {
       const weekStart = new Date(today);
-      weekStart.setDate(today.getDate() - today.getDay() + 1);
+      const dow = today.getDay();
+      weekStart.setDate(today.getDate() - (dow === 0 ? 6 : dow - 1));
       filtered = logins.filter((l) => l.time >= weekStart);
     }
 
@@ -167,7 +168,8 @@ export class DashboardComponent {
     today.setHours(0, 0, 0, 0);
 
     const weekStart = new Date(today);
-    weekStart.setDate(today.getDate() - today.getDay() + 1);
+    const dow = today.getDay();
+    weekStart.setDate(today.getDate() - (dow === 0 ? 6 : dow - 1));
 
     const monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
 

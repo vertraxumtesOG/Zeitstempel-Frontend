@@ -61,7 +61,8 @@ export class TimeLogModalComponent implements OnChanges {
 
     if (month === 'week') {
       const weekStart = new Date(today);
-      weekStart.setDate(today.getDate() - today.getDay() + 1);
+      const dow = today.getDay();
+      weekStart.setDate(today.getDate() - (dow === 0 ? 6 : dow - 1));
       return logins.filter((l) => l.time >= weekStart);
     }
 
