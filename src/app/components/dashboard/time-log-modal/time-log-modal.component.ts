@@ -6,6 +6,8 @@ import {
   ChangeDetectionStrategy,
   computed,
   signal,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,15 +22,23 @@ import { Login } from '../../../services/api.service';
   styleUrl: './time-log-modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TimeLogModalComponent {
+export class TimeLogModalComponent implements OnChanges {
   @Input() isOpen = false;
   @Input() logins: Login[] = [];
   @Output() close = new EventEmitter<void>();
 
+  private loginsSignal = signal<Login[]>([]);
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['logins']) {
+      this.loginsSignal.set(changes['logins'].currentValue ?? []);
+    }
+  }
+
   selectedMonth = signal('all');
 
   filteredLogins = computed(() => {
-    const logins = this.logins;
+    const logins = this.loginsSignal();
     if (!logins.length) return [];
 
     const today = new Date();
