@@ -36,7 +36,7 @@ export class AuthService {
         this.apiService.getMitarbeiter().pipe(
           map((employees) => {
             const emp = employees.find((e) => e.uid === response.user_id);
-            console.log(response.user_id, employees)
+            console.log(response.user_id, employees);
             if (emp) {
               const state: AuthState = {
                 userId: emp.id,

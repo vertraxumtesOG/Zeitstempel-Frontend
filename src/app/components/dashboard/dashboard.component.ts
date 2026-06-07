@@ -38,9 +38,9 @@ export class DashboardComponent {
       switchMap(([userId, userUid]) => {
         if (userUid != null) return of(userUid);
         if (userId == null) return of(null as number | null);
-        return this.apiService.getMitarbeiter().pipe(
-          map((employees) => employees.find((e) => e.id === userId)?.uid ?? null),
-        );
+        return this.apiService
+          .getMitarbeiter()
+          .pipe(map((employees) => employees.find((e) => e.id === userId)?.uid ?? null));
       }),
     ),
     { initialValue: null as number | null },
