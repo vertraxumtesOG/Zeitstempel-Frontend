@@ -15,7 +15,14 @@ type StatsFilter = 'all' | 'current' | 'last' | 'week';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, TimeLogModalComponent, AllLogsModalComponent, NewMitarbeiterModalComponent, ShButtonComponent, ShNavbarComponent],
+  imports: [
+    CommonModule,
+    TimeLogModalComponent,
+    AllLogsModalComponent,
+    NewMitarbeiterModalComponent,
+    ShButtonComponent,
+    ShNavbarComponent,
+  ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

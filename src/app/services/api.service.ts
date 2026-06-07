@@ -84,14 +84,18 @@ export class ApiService {
     );
   }
 
-  postMitarbeiter(firstName: string, lastName: string, uid: number): Observable<{ status: string }> {
-    return this.http.post<{ status: string }>(`${this.base}/mitarbeiter`, {
-      first_name: firstName,
-      last_name: lastName,
-      uid,
-    }).pipe(
-      switchMap(() => this.http.post<{ status: string }>(`${this.base}/chip`, { uid })),
-    );
+  postMitarbeiter(
+    firstName: string,
+    lastName: string,
+    uid: number,
+  ): Observable<{ status: string }> {
+    return this.http
+      .post<{ status: string }>(`${this.base}/mitarbeiter`, {
+        first_name: firstName,
+        last_name: lastName,
+        uid,
+      })
+      .pipe(switchMap(() => this.http.post<{ status: string }>(`${this.base}/chip`, { uid })));
   }
 
   postLogin(uid: number): Observable<LoginResponse> {
